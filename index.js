@@ -48,7 +48,7 @@ async function getManagementToken(cache, secrets) {
     clientSecret: M2M_CLIENT_SECRET,
   });
 
-  const newToken = await authenticationClient.oauth.clientCredentialGrant({
+  const newToken = await authenticationClient.oauth.clientCredentialsGrant({
     audience: audience 
   });
 
