@@ -1,6 +1,7 @@
 {
-  "name": "auth0-actions-mgmtapi",
-  "version": "1.0.5",
+  "name": "@australiangreens/auth0-actions-mgmtapi",
+  "private": false,
+  "version": "1.0.0",
   "description": "A helper library for using auth0's Management API within auth0 Actions",
   "main": "index.js",
   "scripts": {
@@ -14,7 +15,7 @@
     "auth0"
   ],
   "author": "John Twyman",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/australiangreens/auth0-actions-mgmtapi/issues"
   },
