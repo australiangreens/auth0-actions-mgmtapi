@@ -1,6 +1,6 @@
 {
   "name": "auth0-actions-mgmtapi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A helper library for using auth0's Management API within auth0 Actions",
   "main": "index.js",
   "scripts": {

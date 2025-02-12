@@ -48,15 +48,25 @@ async function getManagementToken(cache, secrets) {
     clientSecret: M2M_CLIENT_SECRET,
   });
 
-  const tokenSet = await authenticationClient.oauth.clientCredentialsGrant({
-    audience: audience 
-  });
+  try {
+    const response = await authenticationClient.oauth.clientCredentialsGrant({
+      audience: audience 
+    });
 
-  const newToken = tokenSet.access_token;
+    const tokenSet = response.data;
+    if (!tokenSet || !tokenSet.access_token) {
+      console.error("Unable to retrieve access token");
+      return '';
+    }
 
-  cache.set('first', newToken.slice(0, 2048));
-  cache.set('second', newToken.slice(2048, 4096));
-  cache.set('third', newToken.slice(4096));
+    const newToken = tokenSet.access_token;
+
+    cache.set('first', newToken.slice(0, 2048));
+    cache.set('second', newToken.slice(2048, 4096));
+    cache.set('third', newToken.slice(4096));
+  } catch (error) {
+    console.log("Error retrieving access token");
+  }
 
   return newToken;
 }
