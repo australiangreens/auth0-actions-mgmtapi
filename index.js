@@ -42,14 +42,15 @@ async function getManagementToken(cache, secrets) {
     return firstPart + secondPart + thirdPart;
   }
 
-  const management = new auth0.ManagementClient({ // Only used for initial token fetch
+  const authenticationClient = new auth0.AuthenticationClient({
     domain: M2M_DOMAIN,
     clientId: M2M_CLIENT_ID,
     clientSecret: M2M_CLIENT_SECRET,
-    audience: audience,
   });
 
-  const newToken = await management.getAccessToken();
+  const newToken = await authenticationClient.oauth.clientCredentialGrant({
+    audience: audience 
+  });
 
   cache.set('first', newToken.slice(0, 2048));
   cache.set('second', newToken.slice(2048, 4096));

@@ -51,7 +51,7 @@ Load the package at the top of your Action code:
 
 `const { createManagementClient } = require('@australiangreens/auth0-actions-mgmtmapi');`
 
-Create your management client _inside your Action handler functions_:
+Create your management client _inside your Action handler functions_. You must use the `await` keyword:
 
 `const managementClient = await createManagementClient(event.secrets, api.cache);`
 
